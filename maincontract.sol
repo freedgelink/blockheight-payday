@@ -1,7 +1,12 @@
 pragma solidity ^0.4.25;
 
+
 contract payroll{
     
+    function deposit() payable public {
+    redistribute();
+    }
+        
     address owner = msg.sender;
     
     uint Balance;
@@ -11,7 +16,6 @@ contract payroll{
     uint256 EmployeeCount;
     uint256 ID = 1;
     
-  
     event broadcast(string);
 
     modifier Owned(){
