@@ -12,7 +12,7 @@ contract payroll{
     uint Balance;
     uint AvailableBalance;
     uint ReservedBalance;
-    uint GasReserve
+    uint GasReserve;
     
     uint256 EmployeeCount;
     uint256 ID = 1;
@@ -37,9 +37,11 @@ contract payroll{
         _;
     }
     
-   
+       event broadcast(string);
 
-struct Employees{
+    }
+
+    struct Employees{
         string name;
         address _address;
         uint balance;
@@ -81,10 +83,6 @@ struct Employees{
         _Lock[Name] = true;
         EmployeeCount--;
         }
-    }
-    
-    event broadcast(string);
-
     }
     
     function redistribute() internal {
@@ -177,5 +175,6 @@ function onboard(string Name, address Address) public Owned {
         GasReserve = EmployeeCount * 1e9 wei;
     }
 }
+
 
 
