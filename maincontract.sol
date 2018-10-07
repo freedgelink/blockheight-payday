@@ -23,6 +23,20 @@ contract payroll{
         require (msg.sender == owner);
         _;
     }
+    
+    mapping (uint256 => string) _Name;
+    mapping (uint256 => uint256) _IDnumber;
+    mapping (uint256 => address) _Address;
+    mapping (uint256 => uint256) _Balance;
+    mapping (uint256 => bool) _Lock;
+    
+    mapping (address => uint256) IDbyAddress;
+
+    modifier Owned(){
+        require (msg.sender == owner);
+        _;
+    }
+    
    
 
 struct Employees{
@@ -67,19 +81,6 @@ struct Employees{
         _Lock[Name] = true;
         EmployeeCount--;
         }
-    }
-    
-    mapping (uint256 => string) _Name;
-    mapping (uint256 => uint256) _IDnumber;
-    mapping (uint256 => address) _Address;
-    mapping (uint256 => uint256) _Balance;
-    mapping (uint256 => bool) _Lock;
-    
-    mapping (address => uint256) IDbyAddress;
-
-    modifier Owned(){
-        require (msg.sender == owner);
-        _;
     }
     
     event broadcast(string);
